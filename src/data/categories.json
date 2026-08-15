@@ -1,0 +1,38 @@
+[
+  {
+    "id": "tshirts",
+    "name": "T-Shirts",
+    "description": "Premium cotton everyday essentials",
+    "itemCount": 24
+  },
+  {
+    "id": "shirts",
+    "name": "Shirts",
+    "description": "Refined shirts for every occasion",
+    "itemCount": 18
+  },
+  {
+    "id": "trousers",
+    "name": "Trousers",
+    "description": "Tailored trousers, sharp silhouettes",
+    "itemCount": 16
+  },
+  {
+    "id": "jackets",
+    "name": "Jackets",
+    "description": "Outerwear built for the modern man",
+    "itemCount": 12
+  },
+  {
+    "id": "chinos",
+    "name": "Chinos",
+    "description": "Versatile chinos from casual to formal",
+    "itemCount": 14
+  },
+  {
+    "id": "polos",
+    "name": "Polo Shirts",
+    "description": "Classic polo shirts, refined fit",
+    "itemCount": 20
+  }
+]

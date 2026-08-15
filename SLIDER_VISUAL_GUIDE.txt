@@ -1,0 +1,258 @@
+================================================================================
+COLLECTION SLIDER — VISUAL GUIDE
+================================================================================
+
+BEFORE (Original Grid Layout):
+================================================================================
+
+COLLECTIONS
+Shop by Category                                           View All →
+
+┌─────────────────────────┐  ┌─────────────────────────┐  ┌─────────────────────────┐
+│                         │  │                         │  │                         │
+│     Image Placeholder   │  │     Image Placeholder   │  │     Image Placeholder   │
+│                         │  │                         │  │                         │
+├─────────────────────────┤  ├─────────────────────────┤  ├─────────────────────────┤
+│ T-Shirts                │  │ Shirts                  │  │ Trousers                │
+│ Premium cotton...       │  │ Refined shirts...       │  │ Tailored trousers...    │
+│ 24 Items                │  │ 18 Items                │  │ 16 Items                │
+└─────────────────────────┘  └─────────────────────────┘  └─────────────────────────┘
+
+┌─────────────────────────┐  ┌─────────────────────────┐  ┌─────────────────────────┐
+│                         │  │                         │  │                         │
+│     Image Placeholder   │  │     Image Placeholder   │  │     Image Placeholder   │
+│                         │  │                         │  │                         │
+├─────────────────────────┤  ├─────────────────────────┤  ├─────────────────────────┤
+│ Jackets                 │  │ Chinos                  │  │ Polo Shirts             │
+│ Outerwear built...      │  │ Versatile chinos...     │  │ Classic polo shirts...  │
+│ 12 Items                │  │ 14 Items                │  │ 20 Items                │
+└─────────────────────────┘  └─────────────────────────┘  └─────────────────────────┘
+
+
+AFTER (New Slider Layout):
+================================================================================
+
+COLLECTIONS
+Shop by Category                                           View All →
+
+
+DESKTOP (1024px+) — Shows 3 cards at a time:
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+    <                                                                        >
+
+    ┌─────────────────────────┐  ┌─────────────────────────┐  ┌─────────────────────────┐
+    │                         │  │                         │  │                         │
+    │     T-Shirt SVG         │  │     Shirt SVG           │  │     Trouser SVG         │
+    │     (Premium Image)     │  │     (Premium Image)     │  │     (Premium Image)     │
+    │                         │  │                         │  │                         │
+    ├─────────────────────────┤  ├─────────────────────────┤  ├─────────────────────────┤
+    │ T-Shirts                │  │ Shirts                  │  │ Trousers                │
+    │ Premium cotton...       │  │ Refined shirts...       │  │ Tailored trousers...    │
+    │ 24 Items                │  │ 18 Items                │  │ 16 Items                │
+    └─────────────────────────┘  └─────────────────────────┘  └─────────────────────────┘
+
+    ┌─────────────────────────┐
+    │   Jackets (partially     │
+    │   visible - scroll next) │
+    └─────────────────────────┘
+
+
+TABLET (768px-1023px) — Shows 2 cards at a time:
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+    <                                                    >
+
+    ┌─────────────────────────────────────┐  ┌─────────────────────────────────────┐
+    │                                     │  │                                     │
+    │     T-Shirt SVG (Larger on Tab)     │  │     Shirt SVG (Larger on Tab)       │
+    │                                     │  │                                     │
+    ├─────────────────────────────────────┤  ├─────────────────────────────────────┤
+    │ T-Shirts                            │  │ Shirts                              │
+    │ Premium cotton everyday essentials  │  │ Refined shirts for every occasion   │
+    │ 24 Items                            │  │ 18 Items                            │
+    └─────────────────────────────────────┘  └─────────────────────────────────────┘
+
+    ┌─────────────────────────────────────┐
+    │   Trousers (partially visible)      │
+    └─────────────────────────────────────┘
+
+
+MOBILE (<768px) — Shows 1 card + 10% preview:
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+[No buttons - touch scroll enabled]
+
+┌────────────────────────────────┐┐
+│                                │┐  ← 10% of next card
+│     T-Shirt SVG                │┐     visible
+│     (Full Width Minus Padding)  │┐
+│                                │┐
+├────────────────────────────────┤┐
+│ T-Shirts                       ││
+│ Premium cotton everyday        ││
+│ essentials                     ││
+│ 24 Items                       ││
+└────────────────────────────────┘┘
+
+
+KEY IMPROVEMENTS:
+================================================================================
+
+✓ Horizontal Slider Instead of Grid
+  - More premium, editorial feel
+  - Elegant horizontal scrolling
+  - Better suits fashion presentation
+
+✓ Responsive Design
+  - Desktop: 3 cards
+  - Tablet: 2 cards
+  - Mobile: 1 card + preview
+
+✓ Navigation Controls
+  - Previous/Next buttons (desktop/tablet)
+  - Touch-friendly on mobile
+  - Smart button states (disabled at edges)
+
+✓ Real Category Images
+  - Premium SVG illustrations
+  - Professional men's fashion imagery
+  - Consistent, cohesive visual style
+  - High quality on all screen sizes
+
+✓ Maintained Design Language
+  - Same color palette (white, black, grey)
+  - Same typography hierarchy
+  - Minimal, editorial aesthetic
+  - No unnecessary effects
+
+✓ Clean Implementation
+  - No animation libraries
+  - Pure React + CSS
+  - Smooth native scrolling
+  - Optimal performance
+
+
+NAVIGATION FLOW:
+================================================================================
+
+User clicks category card (e.g., "T-Shirts"):
+        ↓
+Category card is clickable link
+        ↓
+Navigates to /collection/tshirts
+        ↓
+Collection page loads
+        ↓
+Products filtered to show T-Shirts only
+        ↓
+User sees T-Shirt products in grid
+
+User clicks "View All →":
+        ↓
+Navigates to /collection
+        ↓
+All categories shown at top
+        ↓
+All products shown in grid below
+
+
+INTERACTIVE BEHAVIOR:
+================================================================================
+
+DESKTOP/TABLET:
+┌────────────────────────────────────────────────────────────────────────────┐
+│ Hover on card → image opacity decreases slightly (subtle effect)           │
+│ Hover on category name → text changes from black to grey                   │
+│ Click card → navigate to filtered collection page                          │
+│ Click previous button → scroll left 400px smoothly                         │
+│ Click next button → scroll right 400px smoothly                            │
+│ Button disabled → at start/end of slider (opacity 30%)                     │
+└────────────────────────────────────────────────────────────────────────────┘
+
+MOBILE:
+┌────────────────────────────────────────────────────────────────────────────┐
+│ Swipe/drag left → scroll to next category                                  │
+│ Swipe/drag right → scroll to previous category                             │
+│ Click card → navigate to filtered collection page                          │
+│ Natural momentum scroll supported                                          │
+└────────────────────────────────────────────────────────────────────────────┘
+
+
+VISUAL COMPARISON:
+================================================================================
+
+ASPECT               BEFORE                  AFTER
+─────────────────────────────────────────────────────────────────────────────
+Layout               Multi-row grid          Horizontal slider
+Cards visible        6 at once               3/2/1 (desktop/tablet/mobile)
+Navigation           Pagination implied      Previous/Next buttons
+Feel                 E-commerce grid         Premium fashion showcase
+User interaction     Static grid view        Active scrolling experience
+Mobile experience    All 6 visible           One at a time (touch scroll)
+Design aesthetic     Standard grid           Editorial, horizontal flow
+
+
+IMAGE IMPROVEMENTS:
+================================================================================
+
+BEFORE:
+- Missing/broken placeholder images
+- Inconsistent visual style
+- No real product representation
+
+AFTER:
+- 6 premium SVG illustrations
+- Professional men's fashion imagery
+- Consistent visual language
+- High quality at all sizes
+- Cohesive aesthetic
+
+Images created:
+  ✓ tshirts.svg      - Black t-shirt with styling
+  ✓ shirts.svg       - Navy button-up shirt
+  ✓ trousers.svg     - Charcoal trousers with creases
+  ✓ jackets.svg      - Dark jacket with zipper
+  ✓ chinos.svg       - Khaki chinos with details
+  ✓ polos.svg        - Navy polo shirt
+
+
+TECHNICAL DETAILS:
+================================================================================
+
+Component: CollectionSlider.jsx
+Location: src/components/CollectionSlider.jsx
+
+Features:
+✓ React hooks (useState, useRef, useEffect)
+✓ Smooth scroll behavior (native browser)
+✓ Responsive card widths (Tailwind breakpoints)
+✓ No animation libraries
+✓ Pure CSS overflow/scroll
+✓ SVG hidden scrollbar (clean look)
+
+Properties:
+✓ Scroll amount per click: 400px
+✓ Gap between cards: 24px (md) / 32px (lg)
+✓ Card width: 100% (mobile), 50% (tablet), 33.33% (desktop)
+✓ Smooth scroll enabled
+
+File Changes:
+✓ src/pages/Home.jsx          - Import change
+✓ src/data/categories.json    - Image path updates
+✓ src/components/CollectionSlider.jsx - New file
+✓ 6 SVG image files           - New category images
+
+
+RESULT:
+================================================================================
+
+The Collection section now feels like a premium fashion brand experience.
+
+Instead of a static grid, users see an elegant horizontal showcase of 
+categories that invites them to explore and interact.
+
+The slider maintains the website's minimal, editorial aesthetic while 
+providing a more sophisticated and engaging way to browse product categories.
+
+================================================================================

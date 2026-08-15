@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000">
+  <!-- Background -->
+  <rect width="1000" height="1000" fill="#f5f5f5"/>
+  
+  <!-- T-Shirt Shape -->
+  <defs>
+    <linearGradient id="shirtGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#1a1a1a;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#333333;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  
+  <!-- Main body -->
+  <path d="M 300 250 L 450 250 L 450 150 L 550 150 L 550 250 L 700 250 L 700 800 Q 500 850 300 800 Z" 
+        fill="url(#shirtGradient)" stroke="none"/>
+  
+  <!-- Sleeves -->
+  <ellipse cx="250" cy="350" rx="80" ry="180" fill="#1a1a1a" opacity="0.9"/>
+  <ellipse cx="750" cy="350" rx="80" ry="180" fill="#1a1a1a" opacity="0.9"/>
+  
+  <!-- Neckline highlight -->
+  <path d="M 450 250 L 450 280 L 550 280 L 550 250 Z" fill="#0d0d0d" opacity="0.7"/>
+  
+  <!-- Subtle texture/shadow -->
+  <ellipse cx="500" cy="500" rx="150" ry="200" fill="#000000" opacity="0.05"/>
+</svg>

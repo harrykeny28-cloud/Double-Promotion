@@ -1,0 +1,97 @@
+═══════════════════════════════════════════════════════════════════
+    OCNETTU DEPLOYMENT - QUICK START GUIDE
+═══════════════════════════════════════════════════════════════════
+
+🎯 WHAT TO SEND TO YOUR CLIENT:
+
+Option A: SINGLE FILE (EASIEST) ⭐
+─────────────────────────────────────────────────────────────────
+Send ONLY this file:
+   📄 ocneetu-deploy.html
+
+This is a complete standalone file with everything included.
+No setup needed - client just opens it in a browser!
+
+   Location: c:\Office\FreeLance\double-service\ocneetu-deploy.html
+
+
+Option B: ALL FILES PACKAGE
+─────────────────────────────────────────────────────────────────
+Send the ZIP package:
+   📦 OCNEETU-Deploy-Package.zip
+
+Contains:
+   - ocneetu-deploy.html (main file)
+   - ocneetu.html (alternate structure)
+   - ocneetu-styles.css (separate styling)
+   - ocneetu-script.js (separate JavaScript)
+   - OCNEETU_README.md (documentation)
+
+
+═══════════════════════════════════════════════════════════════════
+📋 HOW YOUR CLIENT USES IT:
+═══════════════════════════════════════════════════════════════════
+
+1. Download the file
+2. Double-click the HTML file (or right-click → Open with Browser)
+3. Website opens immediately - fully functional!
+
+✅ Images display correctly
+✅ All buttons work
+✅ Responsive on all devices
+✅ Professional design
+✅ No installation needed
+
+
+═══════════════════════════════════════════════════════════════════
+🌐 TO PUBLISH ONLINE:
+═══════════════════════════════════════════════════════════════════
+
+1. Upload ocneetu-deploy.html to your web server
+2. Share the URL link with client
+3. Done!
+
+Example: https://your-domain.com/ocneetu-deploy.html
+
+
+═══════════════════════════════════════════════════════════════════
+🎨 CUSTOMIZATION BEFORE SENDING:
+═══════════════════════════════════════════════════════════════════
+
+Open ocneetu-deploy.html in a text editor to change:
+
+Text Content:
+   - Title: "VAIRA MUTHU"
+   - Description text
+   - Button labels
+   - Contact info
+
+Colors:
+   - Orange color: #ff8c00 (replace with your color)
+   - Dark background: #0a0a0a
+   - White text: #ffffff
+
+Links:
+   - Update button onclick handlers
+   - Add proper URLs
+
+
+═══════════════════════════════════════════════════════════════════
+📂 FILE LOCATIONS:
+═══════════════════════════════════════════════════════════════════
+
+c:\Office\FreeLance\double-service\
+├── ocneetu-deploy.html ⭐ USE THIS ONE
+├── ocneetu.html
+├── ocneetu-styles.css
+├── ocneetu-script.js
+├── OCNEETU-Deploy-Package.zip
+├── OCNEETU_README.md
+└── DEPLOY_INSTRUCTIONS.txt (this file)
+
+
+═══════════════════════════════════════════════════════════════════
+✅ READY TO DEPLOY!
+═══════════════════════════════════════════════════════════════════
+
+Send ocneetu-deploy.html and it's ready to go! 🚀

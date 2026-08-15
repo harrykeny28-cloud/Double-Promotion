@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000">
+  <!-- Background -->
+  <rect width="1000" height="1000" fill="#f5f5f5"/>
+  
+  <!-- Jacket -->
+  <defs>
+    <linearGradient id="jacketGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#3a3a3a;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#1a1a1a;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  
+  <!-- Main jacket body -->
+  <path d="M 300 300 L 450 200 L 550 200 L 700 300 L 720 350 L 700 850 Q 500 900 300 850 L 280 350 Z" 
+        fill="url(#jacketGradient)"/>
+  
+  <!-- Collar -->
+  <polygon points="450,200 480,280 450,350 420,280" fill="#1a1a1a"/>
+  <polygon points="550,200 520,280 550,350 580,280" fill="#1a1a1a"/>
+  
+  <!-- Zipper -->
+  <line x1="500" y1="300" x2="500" y2="800" stroke="#888888" stroke-width="4" opacity="0.4"/>
+  <circle cx="500" cy="330" r="6" fill="#888888" opacity="0.5"/>
+  
+  <!-- Shoulder seams -->
+  <path d="M 450 240 Q 470 280 500 280" stroke="#000000" stroke-width="2" fill="none" opacity="0.15"/>
+  <path d="M 550 240 Q 530 280 500 280" stroke="#000000" stroke-width="2" fill="none" opacity="0.15"/>
+  
+  <!-- Pocket lines -->
+  <rect x="350" y="500" width="80" height="120" fill="none" stroke="#000000" stroke-width="2" opacity="0.1" rx="4"/>
+  <rect x="570" y="500" width="80" height="120" fill="none" stroke="#000000" stroke-width="2" opacity="0.1" rx="4"/>
+  
+  <!-- Sleeves -->
+  <ellipse cx="200" cy="400" rx="100" ry="220" fill="#1a1a1a" opacity="0.85"/>
+  <ellipse cx="800" cy="400" rx="100" ry="220" fill="#1a1a1a" opacity="0.85"/>
+  
+  <!-- Sleeve cuff indicators -->
+  <ellipse cx="200" cy="680" rx="95" ry="40" fill="#111111" opacity="0.6"/>
+  <ellipse cx="800" cy="680" rx="95" ry="40" fill="#111111" opacity="0.6"/>
+</svg>

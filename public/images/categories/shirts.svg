@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000">
+  <!-- Background -->
+  <rect width="1000" height="1000" fill="#f5f5f5"/>
+  
+  <!-- Shirt with buttons and collar -->
+  <defs>
+    <linearGradient id="buttonShirtGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#1a1a2e;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#2d2d44;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  
+  <!-- Main shirt body -->
+  <path d="M 350 280 L 400 200 L 600 200 L 650 280 L 700 300 L 700 850 Q 500 900 300 850 L 300 300 Z" 
+        fill="url(#buttonShirtGradient)" stroke="none"/>
+  
+  <!-- Collar left -->
+  <polygon points="400,200 450,280 400,320" fill="#0f0f1a"/>
+  
+  <!-- Collar right -->
+  <polygon points="600,200 550,280 600,320" fill="#0f0f1a"/>
+  
+  <!-- Button placket -->
+  <rect x="480" y="300" width="40" height="500" fill="#111111" opacity="0.3"/>
+  
+  <!-- Buttons -->
+  <circle cx="500" cy="380" r="8" fill="#555555" opacity="0.6"/>
+  <circle cx="500" cy="480" r="8" fill="#555555" opacity="0.6"/>
+  <circle cx="500" cy="580" r="8" fill="#555555" opacity="0.6"/>
+  <circle cx="500" cy="680" r="8" fill="#555555" opacity="0.6"/>
+  
+  <!-- Sleeves -->
+  <ellipse cx="220" cy="380" rx="90" ry="200" fill="#0f0f1a" opacity="0.8"/>
+  <ellipse cx="780" cy="380" rx="90" ry="200" fill="#0f0f1a" opacity="0.8"/>
+  
+  <!-- Subtle fold lines -->
+  <path d="M 350 300 Q 380 400 350 600" stroke="#000000" stroke-width="2" fill="none" opacity="0.05"/>
+  <path d="M 650 300 Q 620 400 650 600" stroke="#000000" stroke-width="2" fill="none" opacity="0.05"/>
+</svg>
