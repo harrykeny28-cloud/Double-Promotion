@@ -43,9 +43,9 @@ export default function BrandStory() {
                   Address
                 </p>
                 <p className="text-base font-normal text-[#111111]">
-                  Double Promotion<br />
-                  123 Fashion District<br />
-                  New Delhi, India 110001
+                  M.K Readymades<br />
+                  No. 47-A Mettu Street<br />
+                  Kanchipuram - 631501
                 </p>
               </div>
 
@@ -71,8 +71,8 @@ export default function BrandStory() {
                   +91 98765 43210
                 </a>
                 <br />
-                <a href="mailto:hello@doubleservice.com" className="text-base font-normal text-[#111111] hover:text-[#555555] transition-colors">
-                  hello@doubleservice.com
+                <a href="https://www.doublepromotion.com" className="text-base font-normal text-[#111111] hover:text-[#555555] transition-colors">
+                  www.doublepromotion.com
                 </a>
               </div>
 

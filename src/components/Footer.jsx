@@ -48,14 +48,15 @@ export default function Footer() {
                 +91 98765 43210
               </a>
               <a
-                href="mailto:hello@doubleservice.com"
+                href="https://www.doublepromotion.com"
                 className="block text-sm font-semibold text-[#111111] hover:text-[#555555] transition-colors"
               >
-                hello@doubleservice.com
+                www.doublepromotion.com
               </a>
               <p className="text-sm font-normal text-[#111111]">
-                123 Fashion District<br />
-                New Delhi, India 110001
+                M.K Readymades<br />
+                No. 47-A Mettu Street<br />
+                Kanchipuram - 631501
               </p>
             </div>
           </div>

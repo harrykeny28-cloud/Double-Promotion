@@ -61,11 +61,11 @@ export default function Contact() {
                 <p className="section-label mb-4">Address</p>
                 <div className="space-y-2">
                   <p className="text-base font-normal text-[#111111]">
-                    Double Promotion
+                    M.K Readymades
                   </p>
                   <p className="text-base font-normal text-[#555555]">
-                    123 Fashion District<br />
-                    New Delhi, India 110001
+                    No. 47-A Mettu Street<br />
+                    Kanchipuram - 631501
                   </p>
                 </div>
               </div>
@@ -100,16 +100,10 @@ export default function Contact() {
               <div>
                 <p className="section-label mb-4">Email</p>
                 <a
-                  href="mailto:hello@doubleservice.com"
+                  href="https://www.doublepromotion.com"
                   className="text-base font-normal text-[#111111] hover:text-[#555555] transition-colors block"
                 >
-                  hello@doubleservice.com
-                </a>
-                <a
-                  href="mailto:wholesale@doubleservice.com"
-                  className="text-base font-normal text-[#111111] hover:text-[#555555] transition-colors block"
-                >
-                  wholesale@doubleservice.com
+                  www.doublepromotion.com
                 </a>
               </div>
 
@@ -255,7 +249,7 @@ export default function Contact() {
                   Do you offer wholesale?
                 </h3>
                 <p className="text-base font-normal text-[#555555] leading-relaxed">
-                  Yes, we work with retailers and boutiques. Contact us at wholesale@doubleservice.com for partnership details.
+                  Yes, we work with retailers and boutiques. Contact us at www.doublepromotion.com for partnership details.
                 </p>
               </div>
 
