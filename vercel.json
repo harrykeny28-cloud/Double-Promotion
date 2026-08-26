@@ -3,8 +3,16 @@
   "outputDirectory": "dist",
   "routes": [
     {
-      "src": "/",
-      "dest": "/"
+      "src": "/assets/(?<path>.*)",
+      "dest": "/assets/$path"
+    },
+    {
+      "src": "/favicon.svg",
+      "dest": "/favicon.svg"
+    },
+    {
+      "src": "/images/(?<path>.*)",
+      "dest": "/images/$path"
     },
     {
       "src": "/(.*)",
