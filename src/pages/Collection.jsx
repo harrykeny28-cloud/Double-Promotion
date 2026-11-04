@@ -20,11 +20,14 @@ const imageMap = {
   polos: poloImage,
 }
 
+const PRODUCTS_PER_PAGE = 12
+
 export default function Collection() {
   const { categoryId } = useParams()
   const [filteredProducts, setFilteredProducts] = useState([])
   const [selectedCategory, setSelectedCategory] = useState(null)
   const [sortBy, setSortBy] = useState('featured')
+  const [currentPage, setCurrentPage] = useState(1)
 
   useEffect(() => {
     let result = [...products]
@@ -34,19 +37,115 @@ export default function Collection() {
       result = result.filter(p => p.category === categoryId)
       const cat = categories.find(c => c.id === categoryId)
       setSelectedCategory(cat)
+    } else {
+      // When viewing ALL products, apply genuine-first ordering globally
+      // Separate genuine products (have brand) from dummy products
+      const genuineProducts = result.filter(p => p.brand)
+      const dummyProducts = result.filter(p => !p.brand)
+
+      // Sort each group by the selected sort option
+      const sortFunction = (a, b) => {
+        if (sortBy === 'featured') {
+          return (b.featured ? 1 : 0) - (a.featured ? 1 : 0)
+        } else if (sortBy === 'price-low') {
+          return a.priceValue - b.priceValue
+        } else if (sortBy === 'price-high') {
+          return b.priceValue - a.priceValue
+        } else if (sortBy === 'new') {
+          return (b.new ? 1 : 0) - (a.new ? 1 : 0)
+        }
+        return 0
+      }
+
+      genuineProducts.sort(sortFunction)
+      dummyProducts.sort(sortFunction)
+
+      // Combine: Genuine products first, then dummy products
+      result = [...genuineProducts, ...dummyProducts]
     }
 
-    // Sort
-    if (sortBy === 'price-low') {
-      result.sort((a, b) => a.priceValue - b.priceValue)
-    } else if (sortBy === 'price-high') {
-      result.sort((a, b) => b.priceValue - a.priceValue)
-    } else if (sortBy === 'new') {
-      result.sort((a, b) => (b.new ? 1 : 0) - (a.new ? 1 : 0))
+    // Apply product ordering priority for Shirts category
+    if (categoryId === 'shirts') {
+      // ALWAYS separate genuine and dummy products for Shirts
+      // Genuine products MUST appear first regardless of any other factor
+      const genuineShirts = result.filter(p => p.brand) // Has brand = genuine
+      const dummyShirts = result.filter(p => !p.brand) // No brand = dummy
+
+      // Sort genuine shirts by selected sort option
+      if (sortBy === 'featured') {
+        genuineShirts.sort((a, b) => (b.featured ? 1 : 0) - (a.featured ? 1 : 0))
+      } else if (sortBy === 'price-low') {
+        genuineShirts.sort((a, b) => a.priceValue - b.priceValue)
+      } else if (sortBy === 'price-high') {
+        genuineShirts.sort((a, b) => b.priceValue - a.priceValue)
+      } else if (sortBy === 'new') {
+        genuineShirts.sort((a, b) => (b.new ? 1 : 0) - (a.new ? 1 : 0))
+      }
+
+      // Sort dummy shirts by selected sort option
+      if (sortBy === 'featured') {
+        dummyShirts.sort((a, b) => (b.featured ? 1 : 0) - (a.featured ? 1 : 0))
+      } else if (sortBy === 'price-low') {
+        dummyShirts.sort((a, b) => a.priceValue - b.priceValue)
+      } else if (sortBy === 'price-high') {
+        dummyShirts.sort((a, b) => b.priceValue - a.priceValue)
+      } else if (sortBy === 'new') {
+        dummyShirts.sort((a, b) => (b.new ? 1 : 0) - (a.new ? 1 : 0))
+      }
+
+      // ALWAYS: Genuine shirts first, then dummy shirts
+      // This ensures genuine products always appear before dummy products
+      result = [...genuineShirts, ...dummyShirts]
     }
 
     setFilteredProducts(result)
+    setCurrentPage(1) // Reset to first page when filters/sort changes
   }, [categoryId, sortBy])
+
+  // Pagination logic
+  const totalPages = Math.ceil(filteredProducts.length / PRODUCTS_PER_PAGE)
+  const startIndex = (currentPage - 1) * PRODUCTS_PER_PAGE
+  const endIndex = startIndex + PRODUCTS_PER_PAGE
+  const paginatedProducts = filteredProducts.slice(startIndex, endIndex)
+
+  const handlePageChange = (page) => {
+    setCurrentPage(page)
+    // Scroll to products section
+    const productsSection = document.getElementById('products-section')
+    if (productsSection) {
+      productsSection.scrollIntoView({ behavior: 'smooth', block: 'start' })
+    }
+  }
+
+  const handlePreviousPage = () => {
+    if (currentPage > 1) {
+      handlePageChange(currentPage - 1)
+    }
+  }
+
+  const handleNextPage = () => {
+    if (currentPage < totalPages) {
+      handlePageChange(currentPage + 1)
+    }
+  }
+
+  // Generate page numbers to display
+  const getPageNumbers = () => {
+    const pages = []
+    const maxPagesToShow = 5
+    let startPage = Math.max(1, currentPage - Math.floor(maxPagesToShow / 2))
+    let endPage = Math.min(totalPages, startPage + maxPagesToShow - 1)
+
+    if (endPage - startPage + 1 < maxPagesToShow) {
+      startPage = Math.max(1, endPage - maxPagesToShow + 1)
+    }
+
+    for (let i = startPage; i <= endPage; i++) {
+      pages.push(i)
+    }
+
+    return pages
+  }
 
   return (
     <div className="w-full">
@@ -99,16 +198,73 @@ export default function Collection() {
 
       {/* Products Grid */}
       {categoryId ? (
-        // Category View - Single Column for categories
-        <section className="bg-white py-12 md:py-16">
-          <div className="container-max">
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
-              {filteredProducts.map((product) => (
-                <ProductCard key={product.id} product={product} />
-              ))}
+        // Category View - with pagination
+        <>
+          <section className="bg-white py-12 md:py-16" id="products-section">
+            <div className="container-max">
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
+                {paginatedProducts.map((product) => (
+                  <ProductCard key={product.id} product={product} />
+                ))}
+              </div>
+
+              {/* Pagination Controls */}
+              {totalPages > 1 && (
+                <div className="mt-12 md:mt-16 flex flex-col md:flex-row md:items-center md:justify-center gap-6">
+                  {/* Previous Button */}
+                  <button
+                    onClick={handlePreviousPage}
+                    disabled={currentPage === 1}
+                    className={`px-6 py-3 text-sm font-semibold border transition-all ${
+                      currentPage === 1
+                        ? 'border-[#e8e8e8] text-[#d0d0d0] cursor-not-allowed'
+                        : 'border-[#111111] text-[#111111] hover:bg-[#111111] hover:text-white'
+                    }`}
+                  >
+                    ← Previous
+                  </button>
+
+                  {/* Page Numbers */}
+                  <div className="flex items-center gap-2 justify-center flex-wrap">
+                    {getPageNumbers().map((page) => (
+                      <button
+                        key={page}
+                        onClick={() => handlePageChange(page)}
+                        className={`w-10 h-10 text-sm font-semibold border transition-all ${
+                          page === currentPage
+                            ? 'bg-[#111111] text-white border-[#111111]'
+                            : 'border-[#e8e8e8] text-[#111111] hover:border-[#111111]'
+                        }`}
+                      >
+                        {page}
+                      </button>
+                    ))}
+                  </div>
+
+                  {/* Next Button */}
+                  <button
+                    onClick={handleNextPage}
+                    disabled={currentPage === totalPages}
+                    className={`px-6 py-3 text-sm font-semibold border transition-all ${
+                      currentPage === totalPages
+                        ? 'border-[#e8e8e8] text-[#d0d0d0] cursor-not-allowed'
+                        : 'border-[#111111] text-[#111111] hover:bg-[#111111] hover:text-white'
+                    }`}
+                  >
+                    Next →
+                  </button>
+                </div>
+              )}
+
+              {/* Page Info */}
+              {totalPages > 1 && (
+                <div className="mt-6 text-center text-xs font-semibold text-[#555555]">
+                  Page {currentPage} of {totalPages}
+                </div>
+              )}
             </div>
-          </div>
-        </section>
+          </section>
+        </>
       ) : (
         // All Products View - Show Categories First
         <>
@@ -135,7 +291,7 @@ export default function Collection() {
                         width="300"
                         height="300"
                         loading="lazy"
-                        className="w-full h-full object-cover group-hover:opacity-75 transition-opacity"
+                        className="w-full h-full object-contain group-hover:opacity-75 transition-opacity"
                       />
                     </div>
                     <h3 className="text-sm font-semibold text-[#111111] group-hover:text-[#555555] transition-colors">
@@ -147,7 +303,7 @@ export default function Collection() {
             </div>
           </section>
 
-          <section className="bg-white py-12 md:py-16">
+          <section className="bg-white py-12 md:py-16" id="products-section">
             <div className="container-max">
               <div className="mb-8">
                 <p className="section-label mb-4">Featured</p>
@@ -157,10 +313,65 @@ export default function Collection() {
               </div>
 
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
-                {filteredProducts.map((product) => (
+                {paginatedProducts.map((product) => (
                   <ProductCard key={product.id} product={product} />
                 ))}
               </div>
+
+              {/* Pagination Controls */}
+              {totalPages > 1 && (
+                <div className="mt-12 md:mt-16 flex flex-col md:flex-row md:items-center md:justify-center gap-6">
+                  {/* Previous Button */}
+                  <button
+                    onClick={handlePreviousPage}
+                    disabled={currentPage === 1}
+                    className={`px-6 py-3 text-sm font-semibold border transition-all ${
+                      currentPage === 1
+                        ? 'border-[#e8e8e8] text-[#d0d0d0] cursor-not-allowed'
+                        : 'border-[#111111] text-[#111111] hover:bg-[#111111] hover:text-white'
+                    }`}
+                  >
+                    ← Previous
+                  </button>
+
+                  {/* Page Numbers */}
+                  <div className="flex items-center gap-2 justify-center flex-wrap">
+                    {getPageNumbers().map((page) => (
+                      <button
+                        key={page}
+                        onClick={() => handlePageChange(page)}
+                        className={`w-10 h-10 text-sm font-semibold border transition-all ${
+                          page === currentPage
+                            ? 'bg-[#111111] text-white border-[#111111]'
+                            : 'border-[#e8e8e8] text-[#111111] hover:border-[#111111]'
+                        }`}
+                      >
+                        {page}
+                      </button>
+                    ))}
+                  </div>
+
+                  {/* Next Button */}
+                  <button
+                    onClick={handleNextPage}
+                    disabled={currentPage === totalPages}
+                    className={`px-6 py-3 text-sm font-semibold border transition-all ${
+                      currentPage === totalPages
+                        ? 'border-[#e8e8e8] text-[#d0d0d0] cursor-not-allowed'
+                        : 'border-[#111111] text-[#111111] hover:bg-[#111111] hover:text-white'
+                    }`}
+                  >
+                    Next →
+                  </button>
+                </div>
+              )}
+
+              {/* Page Info */}
+              {totalPages > 1 && (
+                <div className="mt-6 text-center text-xs font-semibold text-[#555555]">
+                  Page {currentPage} of {totalPages}
+                </div>
+              )}
             </div>
           </section>
         </>

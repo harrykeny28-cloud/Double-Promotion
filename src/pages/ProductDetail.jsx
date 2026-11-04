@@ -40,7 +40,8 @@ export default function ProductDetail() {
     )
   }
 
-  const productImage = categoryImageMap[product.category]
+  // Use product's actual image if available, otherwise fall back to category image
+  const productImage = product.image ? product.image : categoryImageMap[product.category]
 
   return (
     <div className="w-full bg-white">
@@ -76,7 +77,7 @@ export default function ProductDetail() {
                 width="500"
                 height="500"
                 loading="eager"
-                className="w-full h-full object-cover"
+                className="w-full h-full object-contain"
               />
             </div>
           </div>
@@ -209,12 +210,12 @@ export default function ProductDetail() {
                   <div className="group cursor-pointer">
                     <div className="bg-[#F5F5F5] aspect-square mb-4 overflow-hidden flex items-center justify-center">
                       <OptimizedImage
-                        src={categoryImageMap[p.category]}
+                        src={p.image ? p.image : categoryImageMap[p.category]}
                         alt={p.name}
                         width="400"
                         height="400"
                         loading="lazy"
-                        className="w-full h-full object-cover group-hover:opacity-75 transition-opacity duration-300"
+                        className="w-full h-full object-contain group-hover:opacity-75 transition-opacity duration-300"
                       />
                     </div>
                     <div className="space-y-2">

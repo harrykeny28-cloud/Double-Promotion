@@ -30,7 +30,7 @@ export default function CategoryCard({ category }) {
             width="400"
             height="400"
             loading="lazy"
-            className="w-full h-full object-cover group-hover:opacity-75 transition-opacity duration-300"
+            className="w-full h-full object-contain group-hover:opacity-75 transition-opacity duration-300"
           />
         </div>
 

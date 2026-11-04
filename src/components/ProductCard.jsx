@@ -17,7 +17,8 @@ const categoryImageMap = {
 }
 
 export default function ProductCard({ product }) {
-  const imageSrc = categoryImageMap[product.category]
+  // Use product's actual image if available, otherwise fall back to category image
+  const imageSrc = product.image ? product.image : categoryImageMap[product.category]
   
   return (
     <Link to={`/product/${product.id}`}>
@@ -30,7 +31,7 @@ export default function ProductCard({ product }) {
             width="400"
             height="400"
             loading="lazy"
-            className="w-full h-full object-cover group-hover:opacity-75 transition-opacity duration-300"
+            className="w-full h-full object-contain group-hover:opacity-75 transition-opacity duration-300"
           />
           {product.new && (
             <span className="absolute top-4 right-4 bg-[#111111] text-white text-xs font-semibold px-3 py-1 tracking-widest uppercase">
